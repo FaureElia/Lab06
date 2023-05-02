@@ -1,5 +1,7 @@
 package it.polito.tdp.meteo.model;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Citta {
@@ -7,7 +9,17 @@ public class Citta {
 	
 	private String nome;
 	private List<Rilevamento> rilevamenti;
+	public List<Rilevamento> rilevamentiFatti=new ArrayList<Rilevamento>();
 	private int counter = 0;
+	
+	public Rilevamento cercaRilevamento (int posizione) {
+		for (Rilevamento r:rilevamenti) {
+			if (r.getData().getDayOfMonth()==posizione)
+				return r;
+		}
+		return null;
+		
+	}
 	
 	
 	
@@ -46,6 +58,9 @@ public class Citta {
 	
 	public void increaseCounter() {
 		this.counter += 1;
+	}
+	public void decreaseCounter() {
+		this.counter -= 1;
 	}
 
 	@Override
